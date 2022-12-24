@@ -30,8 +30,8 @@ export default function Header() {
           <div className="container">
             <div className="content">
               <div className="contacts">
-                <Link to="tel:+994557700580"><i className="fa-solid fa-phone"></i> +994504324451</Link>
-                <Link to="mailto:spport@ulc.az"><i className="fa-solid fa-phone"></i> support@help.az</Link>
+                <Link to="tel:+994557700580"><i className="fa-solid fa-phone"></i> +994557700580</Link>
+                <Link to="mailto:spport@ulc.az"><i className="fa-solid fa-phone"></i> spport@ulc.az</Link>
               </div>
               <div className="actions">
                 <Link to="/"><i className="fa-solid fa-location-arrow"></i> Store Locations</Link>
@@ -69,7 +69,7 @@ export default function Header() {
                     <Link to={`/catalog/${category.slug}`}>{category.title}</Link>
                     {
                       category.children && category.children.length > 0 ?
-                        <div onMouseLeave={() => hoverHandler(false)} className={`sub-menu${i + 1 === getSubMenu ? ' active' : ''}`}>
+                        <div onMouseLeave={() => hoverHandler(false)} className={`sub-menu${i + 1 == getSubMenu ? ' active' : ''}`}>
                           <div className="wrapperMenu p-4">
                             {
                               category.children.map((subcat, i) => {

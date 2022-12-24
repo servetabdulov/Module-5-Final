@@ -36,7 +36,7 @@ export default function Sliders() {
           getSliders.sliders.map((slider, i) => {
             return <Slider
               key={i}
-              active={(getState.selectedSlide === i ? 1 : null)}
+              active={(getState.selectedSlide == i ? 1 : null)}
               title={slider.title}
               content={slider.content}
               src={slider.src}

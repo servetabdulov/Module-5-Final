@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react'
 import { AuthProviderContext } from '../../contexts/AuthProvider';
 import { useDispatch,useSelector } from 'react-redux';
-import AuthSlice, {signIn} from '../../Authorization/AuthSlice';
+import AuthSlice, {signIn} from '../../features/Authorization/AuthSlice';
 
 export default function Auth() {
 
   const AuthContextProvider = useContext(AuthProviderContext);
   const [getForm, setForm] = useState({ email: '', password: '' });
-  const [getError] = useState({ responseError: null, errors: [] })
+  const [getError, setError] = useState({ responseError: null, errors: [] })
   const dispatch=useDispatch();
 
   const AuthReducer=useSelector(state=>state);
@@ -65,7 +65,7 @@ export default function Auth() {
             {
               getError.responseError ?
                 <div className="alert alert-danger mt-4 text-center" role="alert">
-                  {getError.responseError === 'Unauthorized' ? 'İstifadəçi adı və ya email yanlışdır' : null}
+                  {getError.responseError == 'Unauthorized' ? 'İstifadəçi adı və ya email yanlışdır' : null}
                 </div>
                 : null
             }

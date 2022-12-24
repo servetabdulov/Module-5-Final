@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
-// import { useSnackbar } from 'notistack';
-// import Cookies from "universal-cookie";
+import { useSnackbar } from 'notistack';
+import Cookies from "universal-cookie";
 
 
-// const fetchUser= async ()=>{
+const fetchUser= async ()=>{
 
-// }
+}
 
 const AuthSlice = createSlice({
     name: 'Authorization',

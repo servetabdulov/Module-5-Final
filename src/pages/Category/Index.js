@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { CategoryContext } from '../../contexts/Basket/CategoryContextProvider'
 import ProductStandartComponent from '../../components/ProductStandartComponent'
 import ProductGenLoader from '../../components/Loader/ProductGenLoader';

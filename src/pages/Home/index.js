@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import ProductStandartComponent from '../../components/ProductStandartComponent'
 import Sliders from './components/Slider/Sliders'
+import WeeklyDiscount from './components/WeeklyDiscount/WeeklyDiscount'
 import { useSnackbar } from 'notistack';
 import axios from 'axios';
 import { useState } from 'react';

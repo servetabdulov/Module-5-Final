@@ -1,9 +1,13 @@
-// import React, { useContext } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
-//import { CategoryContext } from '../../contexts/Basket/CategoryContextProvider';
+import { CategoryContext } from '../../contexts/Basket/CategoryContextProvider';
 import { formatMoney } from '../../Helpers/GeneralHelper';
 export default function Product(props) {
-   
+    // const { enqueueSnackbar } = useSnackbar();
+
+    const { normalCategories } = useContext(CategoryContext)
+
+
     const productUrl = `/catalog${props.product.url.join('')}/${props.product.slug}`;
 
     return (
@@ -20,7 +24,7 @@ export default function Product(props) {
                         {
                             props.product.models && props.product.models.length > 0 ?
                                 props.product.models.map(mod =>
-                                    mod.id === props.basketDetail.model ? mod.title : null
+                                    mod.id == props.basketDetail.model ? mod.title : null
                                 )
                                 : null
                         }

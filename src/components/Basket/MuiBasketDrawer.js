@@ -87,7 +87,7 @@ export default function MuiDrawer(props) {
 
     let amount = 0;
     getProducts.products.map(prod => {
-        const basketItem = getBasket.products.filter(prd => prd.id === prod.id ? prd : null)
+        const basketItem = getBasket.products.filter(prd => prd.id == prod.id ? prd : null)
         return basketItem.length > 0 ? amount += Number(prod.price) * Number(basketItem[0].quantity) : 0
     });
 

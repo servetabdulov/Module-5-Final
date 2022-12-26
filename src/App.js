@@ -1,32 +1,46 @@
-import { Route, Routes } from 'react-router-dom';
-import './assets/css/style.css';
-import './assets/css/all.css';
-import HomePage from './pages/Home/index';
-import ProductSinglePage from './pages/Product/Single';
-import Category from './pages/Category/Index';
-import Master from './layouts/Master'
-import ScrollComponent from './components/ScrollComponent';
-import { SnackbarProvider } from 'notistack';
-import Page404 from './pages/Error/Page404';
-import Auth from './pages/Auth/Auth';
+import React, { useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import Sidecart from "./components/Sidecart";
+import Footer from "./components/Footer";
+import Home from "./pages/HomePage";
+import About from "./pages/AboutPage";
+import Products from "./pages/ProductsPage";
+import Contact from "./pages/ContactPage";
+import SingleProduct from "./pages/SingleProductPage";
+import Cart from "./pages/CartPage";
+import Default from "./pages/Default";
+import { getProducts } from "./store/actions/products";
 
-function App() {
+function App(props) {
+  useEffect(() => {
+    props.getProducts();
+    //eslint-disable-next-line
+  }, []);
 
   return (
-    <SnackbarProvider maxSnack={3}>
-      <Master>
-        <ScrollComponent />
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/auth' element={<Auth />} />
-          <Route path='/catalog/:topcategory' element={<Category />} />
-          <Route path='/catalog/:topcategory/:subcategory' element={<Category />} />
-          <Route path='/catalog/:topcategory/:subcategory/:slug' element={<ProductSinglePage />} />
-          <Route path='/404' element={<Page404/>} />
-        </Routes>
-      </Master>
-    </SnackbarProvider>
+    <React.Fragment>
+      {/** navbar,sidebar,cart,footer */}
+      <Navbar />
+      <Sidebar />
+      <Sidecart />
+
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/contact" component={Contact} />
+        <Route exact path="/products" component={Products} />
+        <Route exact path="/products/:id" component={SingleProduct} />
+        <Route exact path="/cart" component={Cart} />
+        <Route component={Default} />
+      </Switch>
+      <Footer />
+    </React.Fragment>
   );
 }
 
-export default App;
+export default connect(null, { getProducts })(App);
